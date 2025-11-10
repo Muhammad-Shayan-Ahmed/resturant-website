@@ -38,7 +38,10 @@ export default defineConfig({
     reactRouterHonoServer({
       serverEntryPoint: './__create/index.ts',
       runtime: 'node',
-      assetInclude: ['src/app/api/**/*.{js,ts,jsx,tsx}'],
+      // --- FINAL FIX ATTEMPT: We use a highly aggressive glob pattern ('**/*')
+      // to ensure all files and the directory structure under src/app/api are 
+      // included in the server build output (build/server/).
+      assetInclude: ['src/app/api/**/*'],
     }),
     babel({
       include: ['src/**/*.{js,jsx,ts,tsx}'], // or RegExp: /src\/.*\.[tj]sx?$/
@@ -78,10 +81,10 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom'],
   },
+  // `build: {}` section ko saaf rakhte hain, taake plugin ka fix hi kaam kare.
   build: {
-    assetsInclude: ['src/app/api/**'],
+    clearScreen: false,
   },
-  clearScreen: false,
   server: {
     allowedHosts: true,
     host: '0.0.0.0',
