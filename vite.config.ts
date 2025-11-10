@@ -17,7 +17,7 @@ export default defineConfig({
   // Keep them available via import.meta.env.NEXT_PUBLIC_*
   envPrefix: 'NEXT_PUBLIC_',
   optimizeDeps: {
-    // Explicitly include fast-glob, since it gets dynamically imported and we
+    // Explicitly include fast-glob, since it gets dynamically imported, and we
     // don't want that to cause a re-bundle.
     include: ['fast-glob', 'lucide-react'],
     exclude: [
@@ -38,7 +38,7 @@ export default defineConfig({
     reactRouterHonoServer({
       serverEntryPoint: './__create/index.ts',
       runtime: 'node',
-      assetInclude: ['src/app/api/**'],
+      assetInclude: ['src/app/api/**/*.{js,ts,jsx,tsx}'],
     }),
     babel({
       include: ['src/**/*.{js,jsx,ts,tsx}'], // or RegExp: /src\/.*\.[tj]sx?$/
@@ -77,6 +77,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
     dedupe: ['react', 'react-dom'],
+  },
+  build: {
+    assetsInclude: ['src/app/api/**'],
   },
   clearScreen: false,
   server: {
