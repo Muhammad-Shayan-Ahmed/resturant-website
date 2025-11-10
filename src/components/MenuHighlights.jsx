@@ -1,5 +1,5 @@
 import { Flame, Star, Plus } from "lucide-react";
-import { json } from 'react-router-dom';
+import { json } from '@remix-run/router';
 
 // --- FALLBACK DATA (Same as your previous hardcoded data) ---
 export const fallbackHighlights = [
