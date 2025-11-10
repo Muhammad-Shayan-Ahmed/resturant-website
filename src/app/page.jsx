@@ -1,5 +1,4 @@
 import { useLoaderData, json } from 'react-router-dom';
-import { json } from '@remix-run/router';
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 // MenuHighlights aur DealOfTheDay ke components aur unke loader functions import karein
